@@ -5,8 +5,8 @@
   const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const doc = document.documentElement;
   const ETAPAS = [
-    [0, 'Solar y replanteo'], [1.0, 'Cimientos'], [1.6, 'Estructura'], [4.3, 'Cerramientos'],
-    [5.0, 'Carpintería y vidrio'], [5.6, 'Acabados y paisaje'], [6.6, 'Obra entregada']
+    [0, 'Idea y boceto'], [0.7, 'Planta y distribución'], [1.5, 'Alzado y cotas'], [2.3, 'Volúmenes y materiales'],
+    [3.4, 'Interiorismo'], [5.0, 'Paisaje y luz'], [6.2, 'Render final']
   ];
   const stage = document.querySelector('.stage');
   const nombre = document.getElementById('etapa');
@@ -57,6 +57,7 @@
         case 'right': s.transform = `scaleX(${t})`; break;
         case 'pop': s.transform = `scale(${t})`; break;
         case 'fade': s.opacity = o.el.classList.contains('luz') ? t * 0.8 : t; break;
+        case 'out': s.opacity = 1 - t; break;
       }
     }
     /* sol: cruza de izquierda a derecha y se apaga al caer la noche */
@@ -66,7 +67,7 @@
     sol.style.opacity = 1 - clamp((S - 6.2) / 0.6);
     /* la grúa se retira al final y el gancho se balancea con la etapa */
     grua.style.opacity = 1 - clamp((S - 6.2) / 0.6);
-    gancho.style.transform = `translate(${Math.sin(S * 2.4) * 10}px, ${(Math.sin(S * 1.7) + 1) * 22}px)`;
+    if (gancho) gancho.style.transform = `translate(${Math.sin(S * 2.4) * 10}px, ${(Math.sin(S * 1.7) + 1) * 22}px)`;
     /* noche */
     stage.style.setProperty('--night', clamp((S - 6.2) / 0.8).toFixed(3));
     /* nombre de la etapa y barras */

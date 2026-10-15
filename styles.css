@@ -201,3 +201,23 @@ footer.pie nav{display:flex;gap:1.2rem;flex-wrap:wrap}
   .rev{clip-path:none}.rev img{transform:none}
   .hl{background-size:100% .36em}
 }
+
+/* --- casa en render (C-20261015-AGR-06) --- */
+#obra{overflow:visible}
+#obra .rejilla line{stroke:rgba(255,255,255,.07);stroke-width:1}
+#obra .boceto{stroke:#f1ebe0;stroke-width:1.2;fill:none;stroke-linecap:round;opacity:.85}
+#obra .plano{stroke:#eef3f6;stroke-width:2.4;fill:none}
+#obra .plano-vidrio{stroke:#7fb7c9;stroke-width:2;fill:none}
+#obra .plano-fino{stroke:#a9bfcd;stroke-width:1;fill:none}
+#obra .plano-mueble{fill:rgba(255,255,255,.08);stroke:#cfdbe3;stroke-width:1}
+#obra .norte{fill:#eef3f6}
+#obra .alzado{stroke:#ffffff;stroke-width:1.3;fill:none}
+#obra .alzado-fino{stroke:rgba(255,255,255,.5);stroke-width:.8;fill:none}
+#obra .cota{stroke:var(--yellow);stroke-width:1;fill:none}
+#obra .eje{fill:none;stroke:#cfdbe3;stroke-width:1}
+#obra .eje-linea{stroke:rgba(207,219,227,.35);stroke-width:1;stroke-dasharray:6 4 1 4;fill:none}
+#obra .rotulo{fill:#dfe9ef;font:600 11px/1 var(--text);letter-spacing:.12em}
+#obra .rotulo-cota{fill:var(--yellow);font:600 10px/1 var(--text)}
+#obra .rotulo-eje{fill:#dfe9ef;font:600 10px/1 var(--text);text-anchor:middle}
+#obra .pantalla{mix-blend-mode:screen}
+#obra [data-k="pop"]{transform-box:fill-box;transform-origin:50% 100%}
