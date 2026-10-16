@@ -5,8 +5,8 @@
   const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const doc = document.documentElement;
   const ETAPAS = [
-    [0, 'Idea y boceto'], [0.7, 'Planta y distribución'], [1.5, 'Alzado y cotas'], [2.3, 'Volúmenes y materiales'],
-    [3.4, 'Interiorismo'], [5.0, 'Paisaje y luz'], [6.2, 'Render final']
+    [0, 'Idea y boceto'], [1.0, 'Planta y alzado'], [1.8, 'Maqueta'], [2.6, 'Estructura y obra gris'],
+    [3.8, 'Acabados y paisaje'], [5.0, 'Interiorismo'], [6.2, 'Render final']
   ];
   const stage = document.querySelector('.stage');
   const nombre = document.getElementById('etapa');
@@ -15,6 +15,7 @@
   const sol = document.getElementById('sol');
   const gancho = document.getElementById('gancho');
   const grua = document.getElementById('grua');
+  const capas = [...document.querySelectorAll('.stage .foto')].map(el => ({ el, a: +el.dataset.a, b: +el.dataset.b, z: +el.dataset.z }));
 
   /* elementos animados y su longitud de trazo */
   const els = [...document.querySelectorAll('#obra [data-k]')].map(el => ({
@@ -59,6 +60,12 @@
         case 'fade': s.opacity = o.el.classList.contains('luz') ? t * 0.8 : t; break;
         case 'out': s.opacity = 1 - t; break;
       }
+    }
+    /* fotos: cada una se funde sobre la anterior con un acercamiento leve */
+    for (const f of capas) {
+      const u = ease(clamp((S - f.a) / (f.b - f.a)));
+      f.el.style.opacity = u;
+      f.el.style.transform = `scale(${1 + f.z * (1 - u)})`;
     }
     /* sol: cruza de izquierda a derecha y se apaga al caer la noche */
     const f = clamp(S / 7);
