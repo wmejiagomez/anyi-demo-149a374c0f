@@ -90,13 +90,13 @@
     });
   }
 
-  let actual = 0, intro = 0, t0 = performance.now(), primera = true;
+  let actual = 0, pintado = -1, intro = 0, t0 = performance.now();
   function bucle(ahora) {
     /* al cargar, la obra arranca sola unos segundos para que se vea movimiento */
     intro = quieto ? 0 : clamp((ahora - t0) / 3200) * 0.55;
     const meta = Math.max(etapaObjetivo(), intro);
     actual += (meta - actual) * (quieto ? 1 : 0.09);
-    if (primera || Math.abs(meta - actual) > 0.0004) { pintar(actual); primera = false; }
+    if (Math.abs(actual - pintado) > 0.0004) { pintar(actual); pintado = actual; }
     /* cinta métrica */
     const h = doc.scrollHeight - innerHeight;
     if (cinta) cinta.style.transform = `scaleY(${h > 0 ? clamp(scrollY / h) : 0})`;
