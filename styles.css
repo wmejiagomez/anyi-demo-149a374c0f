@@ -226,3 +226,6 @@ footer.pie nav{display:flex;gap:1.2rem;flex-wrap:wrap}
 .stagebar{position:relative;z-index:2;background:linear-gradient(to bottom,rgba(7,16,26,0),rgba(7,16,26,.82) 55%)}
 .stagebar .ia{display:block;margin-top:.25rem;font:500 .72rem/1.25 var(--text);color:#dfe9ef;opacity:.9}
 .dark .hl{color:#fff}
+
+/* --- kicker movil (C-20261015-AGR-09) --- */
+@media (max-width:900px){.wrap{padding-top:3.6rem}}
