@@ -15,6 +15,7 @@
   const sol = document.getElementById('sol');
   const gancho = document.getElementById('gancho');
   const grua = document.getElementById('grua');
+  const obraSvg = document.getElementById('obra');
   const capas = [...document.querySelectorAll('.stage .foto')].map(el => ({ el, a: +el.dataset.a, b: +el.dataset.b, z: +el.dataset.z }));
 
   /* elementos animados y su longitud de trazo */
@@ -67,6 +68,8 @@
       f.el.style.opacity = u;
       f.el.style.transform = `scale(${1 + f.z * (1 - u)})`;
     }
+    /* el dibujo se apaga entero (rejilla, planta, arboles) cuando la maqueta ya tapa el panel */
+    obraSvg.style.opacity = 1 - ease(clamp((S - 1.7) / 0.5));
     /* sol: cruza de izquierda a derecha y se apaga al caer la noche */
     const f = clamp(S / 7);
     sol.setAttribute('cx', 90 + 560 * f);
