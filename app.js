@@ -36,7 +36,7 @@
     });
   }
   function etapaObjetivo() {
-    if (quieto || !claves.length) return 7;
+    if (!claves.length) return 7;
     const y = scrollY + innerHeight * 0.55;
     if (y <= claves[0][0]) return claves[0][1];
     for (let i = 1; i < claves.length; i++) {
@@ -93,7 +93,7 @@
   let actual = 0, intro = 0, t0 = performance.now(), primera = true;
   function bucle(ahora) {
     /* al cargar, la obra arranca sola unos segundos para que se vea movimiento */
-    intro = quieto ? 7 : clamp((ahora - t0) / 3200) * 0.55;
+    intro = quieto ? 0 : clamp((ahora - t0) / 3200) * 0.55;
     const meta = Math.max(etapaObjetivo(), intro);
     actual += (meta - actual) * (quieto ? 1 : 0.09);
     if (primera || Math.abs(meta - actual) > 0.0004) { pintar(actual); primera = false; }
