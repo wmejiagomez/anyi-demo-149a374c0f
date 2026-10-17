@@ -102,6 +102,11 @@ section{padding:clamp(4rem,9vw,8rem) 0;border-top:1px solid var(--line)}
 section:first-child{border-top:0}
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:7rem}
 .hero .lead{margin:1.6rem 0 2rem}
+.hero .lead-fila{display:flex;gap:1.2rem;align-items:center;max-width:42rem;margin:1.6rem 0 2rem}
+.hero h1{font-size:clamp(2rem,4vw,3.6rem)}
+.hero .lead-fila .lead{margin:0}
+.hero a.wa{flex:none;display:grid;place-items:center;width:3.6rem;height:3.6rem;border-radius:50%;background:#25D366;transition:transform .2s var(--ease)}
+.hero a.wa:hover,.hero a.wa:focus-visible{transform:scale(1.08)}
 .hero .acts{display:flex;gap:1.6rem;flex-wrap:wrap;align-items:center}
 .hero .nota{margin-top:3rem;font-size:.92rem;color:#4a5967;max-width:30rem;border-left:3px solid var(--yellow);padding-left:1rem}
 .hero .nota b{display:block;color:var(--ink);font-size:1rem}
